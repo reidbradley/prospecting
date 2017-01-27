@@ -1,0 +1,3 @@
+For Google Sheets/Drive authentication, save your initial `client_secret.json` credential here. When a SheetsApi or DriveApi class is authenticated (via `sheetclassobject.authenticate()` call, new credential files will be saved here (with naming convention `prospecting.googleapis.<apiname>.json`).
+
+To acquire `client_secret.json`, see Step 1 here [sheets](https://developers.google.com/sheets/api/quickstart/python), or here [drive](https://developers.google.com/drive/v3/web/quickstart/python).

@@ -1,0 +1,1 @@
+Log files (`debug.log` and `prospecting.log`) are automatically saved here.

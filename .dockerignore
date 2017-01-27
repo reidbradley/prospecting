@@ -1,0 +1,5 @@
+*/.ipynb_checkpoints
+*.ini
+*__pycache__
+*.pyc
+*scratch.txt

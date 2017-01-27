@@ -1,0 +1,3 @@
+Place `fullchain.pem` and `privkey.pem` files in this directory if using HTTPS. If cert/key file names differ (`fullchain.pem` and `privkey.pem` are the generic names from Lets Encrypt certs), either rename your cert/key files to match or update CERT_FILE and KEY_FILE file name references in `jupyter_notebook_config.py` to prior to building.  As an additional option, you can also use the CERT_PLUS_KEY_FILE notebook.pem file reference if your cert and key are combined in the same file.
+
+If no cert/key files exist, and USE_HTTPS is set to 'true' (via --build-arg in Dockerfile), a self signed cert (`notebook.pem`) will be created and saved here.
