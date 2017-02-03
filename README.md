@@ -6,7 +6,7 @@
 
 # Prospecting &#x2692; <!-- &#9874; -->
 
-This project started as an effort to predict a 'prospect score' for each business in a list of current and (predominantly) potential customers. Though the initial goal was to provide a list which could be used to prioritize sales opportunities (ex. rank order prospects by state), I also had some ideas about tying in Google Sheets to help with data profiling efforts, model performance reporting, and delivery of final predictions. OAuth 2.0 is used for Google API authentication when using the `SheetsApi` and `DriveApi` classes, and the usual Sheets sharing options exist if you want to invite collaborators.
+This project started as an effort to predict a 'prospect score' for each business in a list of current and (predominantly) potential customers. Though the initial goal was to provide a list to help prioritize sales opportunities (ex. rank order prospects by state), I also had some ideas about tying in Google Sheets to help with my typical ML workflow (data profiling, model performance reporting, and delivery of final predictions, revisiting column treatments, etc). OAuth 2.0 is used for Google API authentication when using the `SheetsApi` and `DriveApi` classes, and the usual Sheets sharing options exist if you want to invite collaborators.
 
 I'll be updating this README and documentation in general...In the interim - as an example of how Google Sheets is used, the following table outlines the various spreadsheets and tabs used:
 
