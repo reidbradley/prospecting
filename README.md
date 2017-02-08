@@ -1,4 +1,4 @@
-![prospecting](https://img.shields.io/badge/prospecting-active-lightgrey.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg)
+![status](https://img.shields.io/badge/status-wip-lightgrey.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 <!-- 
 ![docker pulls](https://img.shields.io/docker/pulls/jupyter/base-notebook.svg) ![docker stars](https://img.shields.io/docker/stars/jupyter/base-notebook.svg) [![](https://images.microbadger.com/badges/image/jupyter/base-notebook.svg)](https://microbadger.com/images/jupyter/base-notebook "jupyter/base-notebook image metadata")
