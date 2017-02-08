@@ -8,21 +8,25 @@
 
 This project started as an effort to predict a 'prospect score' for each business in a list of current and (predominantly) potential customers. Though the initial goal was to provide a list to help prioritize sales opportunities (ex. rank order prospects by state), I also had some ideas about tying in Google Sheets to help with my typical ML workflow (data profiling, model performance reporting, and delivery of final predictions, revisiting column treatments, etc). OAuth 2.0 is used for Google API authentication when using the `SheetsApi` and `DriveApi` classes, and the usual Sheets sharing options exist if you want to invite collaborators.
 
-I'll be updating this README and documentation in general...In the interim - as an example of how Google Sheets is used, the following table outlines the various spreadsheets and tabs used:
+I'll be updating this README and documentation in general...In the interim - as an example of how Google Sheets is used, the following table outlines the spreadsheets and tabs included in a typical use case . While I cannot share the prospect dataset I've been working with, I used an old [Innocentive challenge dataset](https://github.com/reidbradley/prospecting/blob/master/data/README.md) as an example.
 
 | spreadsheet | sheet | note
 | --- | --- | ---
-| **prospecting_metadata** | _metadata_ | Control logic for column processing treatments; used by Python to inform how each column is processed. The functions in `process.py` rely on information from this tab.
+| [**projectname_metadata**](https://docs.google.com/spreadsheets/d/17R9V5tefzFzMXBi2i9SOybhqwzF7PSlse9OO99BfDxQ/) | _metadata_ | Control logic for column processing treatments; used by Python to inform how each column is processed. The functions in `process.py` rely on information from this tab.
 |  | _raw_descr_ | Descriptive information about raw data (`df_raw`)
 |  | _clean_descr_ | Descriptive information about cleaned dataset (`df_clean`)
 | --- | --- | ---
-| **prospecting_model_reporting** | _session_report_ | Summarizes model performance, plan to make this the main performance tab. A "session" represents an instance of a "ModelSession" class instance which is used to share access to train/test sets.
-|  | _cv_results_ | If GridSearchCV is used, the `GridSearchCV.cv_results_` reporting is saved here (shows k-fold performance for each parameter set evaluated)
-|  | _model_types_ | A simple lookup table, used by Python script a reference when building the report for the `session_report` tab
+| [**projectname_model_reporting**](https://docs.google.com/spreadsheets/d/1dG5lQfqthqshz45Rs94VLSSWmSrS60b1iw7cT4Rqevs/) | _session_report_ | Summarizes model performance, plan to make this the main performance tab. A "session" represents an instance of a "ModelSession" class instance which is used to share access to train/test sets.
+|  | _cv_results_ | If GridSearchCV is used, the `GridSearchCV.cv_results_` reports are saved here (shows performance by fold for each parameter set evaluated)
+|  | _model_types_ | A simple lookup table, used by Python script as a reference when building the report for the `session_report` tab
+|  | _\_plots_ | <a href="https://docs.google.com/spreadsheets/d/1dG5lQfqthqshz45Rs94VLSSWmSrS60b1iw7cT4Rqevs/pubchart?oid=1358454056&format=interactive"><img src="https://docs.google.com/spreadsheets/d/1dG5lQfqthqshz45Rs94VLSSWmSrS60b1iw7cT4Rqevs/pubchart?oid=1358454056&format=image" alt="performance report" height="115px"></a>&nbsp;<a href="https://docs.google.com/spreadsheets/d/1dG5lQfqthqshz45Rs94VLSSWmSrS60b1iw7cT4Rqevs/pubchart?oid=6448021&format=interactive"><img src="https://docs.google.com/spreadsheets/d/1dG5lQfqthqshz45Rs94VLSSWmSrS60b1iw7cT4Rqevs/pubchart?oid=6448021&format=image" alt="performance report subset" height="115px"></a>
 | --- | --- | ---
-| **prospecting_predictions** | _predictions_ | Final predictions, with probabilities, by firm
-|  | _prospects_ | Master list of prospects
+| **projectname_predictions** | _predictions_ | Final predictions, with probabilities
+|  | _lookupmaster_ | A lookup table with master list of prospects / entities of interest, or misc information to join with predictions
 |  | _README_ | Intend to use as an FYI tab, to provide overview of health of predictions made (ex. highlight number of correct/incorrect predictions, etc)
+
+
+
 <!--
 - **prospecting_metadata**
  - _metadata_ - Control logic for column processing treatments; used by Python to inform how each column is processed
