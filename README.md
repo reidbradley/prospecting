@@ -4,11 +4,13 @@
 ![docker pulls](https://img.shields.io/docker/pulls/jupyter/base-notebook.svg) ![docker stars](https://img.shields.io/docker/stars/jupyter/base-notebook.svg) [![](https://images.microbadger.com/badges/image/jupyter/base-notebook.svg)](https://microbadger.com/images/jupyter/base-notebook "jupyter/base-notebook image metadata")
 -->
 
-# Prospecting &#x2692; <!-- &#9874; -->
+# &#x2692; Prospecting &#x2692; <!-- &#9874; -->
 
-This project started as an effort to predict a 'prospect score' for each business in a list of current and (predominantly) potential customers. Though the initial goal was to provide a list to help prioritize sales opportunities (ex. rank order prospects by state), I also had some ideas about tying in Google Sheets to help with my typical ML workflow (data profiling, model performance reporting, and delivery of final predictions, revisiting column treatments, etc). OAuth 2.0 is used for Google API authentication when using the `SheetsApi` and `DriveApi` classes, and the usual Sheets sharing options exist if you want to invite collaborators.
+This project started as an effort to predict a 'prospect score' for each business in a list of current and (predominantly) potential customers. 
 
-I'll be updating this README and documentation in general...In the interim - as an example of how Google Sheets is used, the following table outlines the spreadsheets and tabs included in a typical use case . While I cannot share the prospect dataset I've been working with, I used an old [Innocentive challenge dataset](https://github.com/reidbradley/prospecting/blob/master/data/README.md) as an example.
+While the initial goal was to provide a list to help prioritize sales opportunities (ex. rank order prospects by state), I also had some ideas about tying in Google Sheets to help with my typical ML workflow (data profiling > clean/transform > performance reporting > delivery of final predictions > revisiting column treatments >> etc). OAuth 2.0 is used for Google API authentication when using the `SheetsApi` and `DriveApi` classes, and the usual Sheets sharing options exist if you want to invite collaborators.
+
+I'll be updating this README and documentation in general...In the interim - as an example of how Google Sheets is used, the following table outlines the spreadsheets and tabs which I have found to be useful. While I cannot share my original prospecting dataset, I used an old [Innocentive challenge dataset](https://github.com/reidbradley/prospecting/blob/master/data/README.md) as an example.
 
 | spreadsheet | sheet | note
 | --- | --- | ---
@@ -85,3 +87,4 @@ I'll be updating this README and documentation in general...In the interim - as 
         ├── start.sh                    # Used by Dockerfile
         └── start-singleuser.sh         # Used by Dockerfile
 ```
+&#x2692; &#x2692; &#x2692;
