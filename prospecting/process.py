@@ -14,6 +14,7 @@ def clean_data(dataframe, metadata):
     tmp_df = strip(tmp_df, metadata, copy=False)
     tmp_df = date_to_ordinal(tmp_df,metadata, copy=False)
     tmp_df = float_to_object(tmp_df,metadata, copy=False)
+    tmp_df = int_to_object(tmp_df,metadata, copy=False)
     tmp_df = zfill_col(tmp_df, metadata, copy=False)
     tmp_df = fill_na_with(tmp_df, metadata, copy=False)
     tmp_df = replace(tmp_df, metadata, copy=False)
@@ -133,6 +134,16 @@ def str_to_int(tmpdf, metadata, copy=True):
     log.info("Converting string to int columns")
     for col in cols:
         tmpdf[col] = tmpdf[col].astype(int)
+    return (tmpdf)
+
+
+def int_to_object(tmpdf, metadata, copy=True):
+    if copy is True:
+        tmpdf = tmpdf.copy()
+    cols = metadata[metadata['int_to_object'].isin(["1"])]['column_name'].tolist()
+    for col in cols:
+        log.info("Converting {0} int to object...".format(col))
+        tmpdf[col] = tmpdf.loc[:,col].astype(object)
     return (tmpdf)
 
 
