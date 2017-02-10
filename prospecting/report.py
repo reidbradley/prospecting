@@ -11,7 +11,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 from sklearn.metrics import confusion_matrix          # (y_true, y_pred[, ...])
 #from sklearn.metrics import classification_report     # (y_true, y_pred)
 from sklearn.metrics import precision_score           # (y_true, y_pred[, ...])
-from sklearn.metrics import recall_score
+from sklearn.metrics import recall_score              # (y_true, y_pred[, ...])
 from sklearn.metrics import accuracy_score            # (y_true, y_pred[, ...])
 from sklearn.metrics import f1_score                  # (y_true, y_pred[, labels, ...])
 from sklearn.metrics import roc_auc_score             # (y_true, y_score[, ...])
@@ -138,7 +138,7 @@ def session_report(modelsession, clf, ytrue, ypred, yprobs):
     if hasattr(clf, "best_estimator_"):
         pipe_steps = {i: (t) for i, t in enumerate([(t[0], type(t[1])) for t in clf.best_estimator_.steps])}
         pipeline = "_".join([pipe_steps[step][0] for step in pipe_steps])
-        best_score = "{:0.3f}".format(clf.best_score_)
+        best_score = "{:0.4f}".format(clf.best_score_)
         best_params_full = {str(param_k): str(param_v) for param_k, param_v in sorted(clf.best_estimator_.get_params().items())}
         tunedparams = clf.tunedparams
         best_parameters = {str(param_name): str(best_params_full[param_name]) for param_name in sorted(tunedparams.keys())}
@@ -174,7 +174,7 @@ def session_report(modelsession, clf, ytrue, ypred, yprobs):
                      ('recall_score', [rec_score]),
                      ('f1_score', [f1]),
                      ('scoring_type', [clf.score_type]),
-                     ('best_score', [best_score]),
+                     ('best_score', [float(best_score)]),
                      ('best_params_tuned', [str(best_parameters)]),
                      ('best_params_all', [str(best_params_full)]),
                      ('pipe_steps', [str(pipe_steps)]),
