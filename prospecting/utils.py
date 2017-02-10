@@ -131,38 +131,37 @@ def download(url):
     return (resp, content)
 
 
-def pickle_dump(obj, filepath):
-    with open(filepath, 'wb') as pckl:
-        pickle.dump(obj, pckl, pickle.HIGHEST_PROTOCOL)
-
-
-def pickle_load(filepath):
-    with open(filepath, 'rb') as pckl:
-        unpckld = pickle.load(pckl)
-    return unpckld
-
-
 def pckl(obj, nameforfile):
     try:
         n_rows = obj.shape[0]
         n_cols = obj.shape[1]
         pickle_path = os.path.join(DATADIR, (nameforfile + "_" + str(n_rows) + "_" + str(n_cols) + ".p"))
     except:
-        pickle_path = os.path.join(DATADIR, (nameforfile + ".p"))
+        n_rows = obj.shape[0]
+        pickle_path = os.path.join(DATADIR, (nameforfile + "_" + str(n_rows) + ".p"))
     finally:
         # TODO create new file version if file exists
         if os.path.isfile(pickle_path):
-            #os.remove(self.credential_path)
+            #os.remove(pickle_path)
             pass
-        obj.to_pickle(pickle_path)
+        if hasattr(obj, 'to_pickle'):
+            obj.to_pickle(pickle_path)
+        else:
+            with open(pickle_path, 'wb') as pckl:
+                pickle.dump(obj, pckl, pickle.HIGHEST_PROTOCOL)
         log.info("Pickled object to: {0}".format(pickle_path))
 
 
 def unpckl(file, path=DATADIR):
     pickle_path = os.path.join(path, file)
     if os.path.isfile(pickle_path):
-        unpickled_object = pd.read_pickle(pickle_path)
-        unpickled_object.__name__ = file
+        try:
+            unpickled_object = pd.read_pickle(pickle_path)
+            unpickled_object.__name__ = file
+        except:
+            with open(pickle_path, 'rb') as pckl:
+                unpickled_object = pickle.load(pckl)
+                unpickled_object.__name__ = file
     else:
         log.info("Pickle file does not exist, returning None")
         unpickled_object = None
