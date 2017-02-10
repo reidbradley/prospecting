@@ -1,7 +1,8 @@
 
 from prospecting.api import GoogleApi, SheetsApi, DriveApi
 from prospecting import process
-from prospecting import model
+#from prospecting import model
+from prospecting.model import ModelSession
 from prospecting.report import (create_description,
                                 plot_distribution,
                                 boxplot)
