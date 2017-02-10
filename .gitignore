@@ -16,7 +16,7 @@ data/tmp/joblib/*
 
 notebooks/*
 !notebooks/README.md
-#!notebooks/v0.1.2.ipynb
+!notebooks/innocentive_*.ipynb
 
 scripts/*
 !scripts/

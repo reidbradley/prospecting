@@ -263,9 +263,9 @@ RUN mkdir /home/$NB_USER/.jupyter && \
     mkdir -p $JOBLIB_TEMP_FOLDER && \
     echo "cacert=/etc/ssl/certs/ca-certificates.crt" > /home/$NB_USER/.curlrc
 
-COPY requirements.txt $PROJECTDIR/requirements.txt
+#COPY requirements.txt $PROJECTDIR/requirements.txt
 COPY requirements_nonconda.txt $PROJECTDIR/requirements_nonconda.txt
-COPY setup.py $PROJECTDIR/setup.py
+#COPY setup.py $PROJECTDIR/setup.py
 # ##############################
 
 USER root
