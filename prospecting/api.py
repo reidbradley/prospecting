@@ -73,8 +73,7 @@ class GoogleApi:
 
     def _get_credentials(self, scopelist):
         log.info('Getting credentials...')
-        #credsfile = ('googleapis.' + self.api_name + '.' + PROJECTNAME + '.json')
-        credsfile = (PROJECTNAME + '.googleapis.' + self.api_name + '.json')
+        credsfile = ('googleapis.' + self.api_name + '.' + PROJECTNAME + '.json')
         self.credential_path = os.path.join(CREDSDIR, credsfile)
         self.store = Storage(self.credential_path)
         file_exists = os.path.isfile(self.credential_path)
@@ -167,7 +166,7 @@ class SheetsApi(GoogleApi):
         self.spreadsheet_id = spreadsheetid
         self.sheet_range = sheetrange
         self.info = None  # reserved for metadata
-        self.data = {}  # store data from get requests
+        self.sheets = {}  # store data from get requests
         GoogleApi.__init__(self, apiname, apiversion, scopelist)
         pass
 
@@ -432,9 +431,8 @@ class SheetsApi(GoogleApi):
         data = {
             "range": sheetrange,
             "majorDimension": majordimension,
-            "values": [
-                dataframe.values.tolist()
-            ]
+            "values": dataframe.values.tolist()
+            #[(dataframe.columns.values.tolist())] + (dataframe.values.tolist())
         }
         self.response = self.service.spreadsheets().values().append(
             spreadsheetId=spreadsheetid,
@@ -460,9 +458,10 @@ class SheetsApi(GoogleApi):
                 data[s] = tmp
             else:
                 try:
-                    data[s] = pd.DataFrame.from_records(tmp[1:len(tmp)],
-                                                        columns=tmp[0])
+                    data[s] = pd.DataFrame.from_records(tmp[1:len(tmp[1])],
+                                                        columns=tmp[0][0:len(tmp[1])])
                 except:
+                    log.warning('Failed to load dataframe, returning tmp')
                     data[s] = tmp
         return (data)
 
